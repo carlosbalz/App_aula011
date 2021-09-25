@@ -46,7 +46,6 @@ async function PessoaSalvar(obj) {
 }
 
 async function PessoaRemover(id) {
-    debugger;
     return new Promise((resolve, reject) => {
         Delete('Pessoa/Remover?id=' + id).then(function (response) {
             if (response.status === 'success') {

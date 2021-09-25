@@ -1,4 +1,5 @@
-﻿using App.Domain.Entities;
+﻿using App.Common;
+using App.Domain.Entities;
 using App.Domain.Interfaces.Application;
 using App.Domain.Interfaces.Repositories;
 using System;
@@ -54,10 +55,22 @@ namespace App.Application.Services
             _repository.SaveChanges();
         }
         public void Salvar(Pessoa obj)
-        {
+        {                        
             if (String.IsNullOrEmpty(obj.Nome))
             {
                 throw new Exception("Informe o nome");
+            }
+            if (!obj.CPF.CpfCnpjValido())
+            {
+                throw new Exception("CPF inválido");
+            }
+            if (obj.Id == Guid.Empty) //Se for alteração
+            {
+                bool existe = _repository.Query(x => x.CPF == obj.CPF).Any();
+                if (existe)
+                {
+                    throw new Exception("CPF já cadastrado");
+                }
             }
             _repository.Save(obj);
             _repository.SaveChanges();
