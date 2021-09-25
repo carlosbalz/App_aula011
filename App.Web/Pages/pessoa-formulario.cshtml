@@ -1,0 +1,55 @@
+﻿@page "/pessoa/formulario/{id?}"
+<h4>Formulário de Pessoas</h4>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group mb-12">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group mb-12">
+                    <label>Cidade</label>
+                    <select class="js-example-basic-single" style="width:100%" name="cidadeId" id="cidadeId">
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-12">
+                <div class="form-group mb-12">
+                    <label>Peso</label>
+                    <input type="number" name="peso" class="form-control">
+                    <label>Altura</label>
+                    <input type="number" name="altura" class="form-control">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" class="form-control" onkeypress="$(this).mask('000.000.000-00')">
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="form-group mb-12">
+                    <label>Data Nascimento</label>
+                    <input type="date" name="dataNascimento" class="form-control" maxlength="10">
+                    <label>Telefone</label>
+                    <input type="text" name="telefone" class="form-control" onkeypress="$(this).mask('(00) 0000-00000')">
+                </div>
+            </div>
+            <div class="form-check col-md-8">
+                <input type="checkbox" name="ativo" id="ativo" class="form-check-input">
+                <label class="form-check-label" for="exampleCheck1">Ativo?</label>
+            </div>
+        </div>
+        <div class="col-md-12 text-right">
+            <button class="btn btn-danger" onclick="window.location.href='/pessoa'">Cancelar</button>
+            <button class="btn btn-success" onclick="salvar();">Salvar</button>
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <script src="~/js/pages/pessoa-formulario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+}
