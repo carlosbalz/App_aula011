@@ -69,7 +69,15 @@ namespace App.Application.Services
                 bool existe = _repository.Query(x => x.CPF == obj.CPF).Any();
                 if (existe)
                 {
-                    throw new Exception("CPF já cadastrado");
+                    throw new Exception("CPF já cadastrado!");
+                }
+            }
+            else
+            {
+                bool existe = _repository.Query(x => x.CPF != obj.CPF && x.Id == obj.Id).Any();
+                if (existe)
+                {
+                    throw new Exception("Não foi possível alterar o cpf da pessoa!");
                 }
             }
             _repository.Save(obj);

@@ -4,7 +4,7 @@
             load();
         }
     });
-    load();
+    load();    
 });
 
 function load() {
@@ -30,6 +30,7 @@ function load() {
                 '<td>' + '<button class="btn btn-info" style="margin-right: 5px;" onclick="window.location.href = \'/pessoa/formulario/' + obj.id + '\'"><i class="fas fa-pencil-alt"></i></button>' + '<button class="btn btn-info" onclick="remover(' + id + ')"> <i class="fas fa-trash"></i></button>' + '</td>' +
                 '</tr>');
         });
+        $('#table-pessoas').DataTable();
     });
 }
 
